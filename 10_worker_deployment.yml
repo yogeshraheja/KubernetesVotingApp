@@ -2,23 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: result
-  name: result
+    app: worker
+  name: worker
   namespace: devopsinaction
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: result
+      app: worker
   template:
     metadata:
       labels:
-        app: result
+        app: worker
     spec:
       containers:
-      - image: yogeshraheja/thinknyxresult:v1
-        name: result
-        ports:
-        - containerPort: 80
-          name: result
+      - image: yogeshraheja/thinknyxworker:v1
+        name: worker
 

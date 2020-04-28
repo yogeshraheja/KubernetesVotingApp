@@ -1,26 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redisdep
-  namespace: devopsinaction
   labels:
-    name: redisdep
-    app: voting-app
+    app: redis
+  name: redis
+  namespace: devopsinaction
 spec:
-  replicas=3
-  template:
-    metadata:
-      name: redispod
-      labels:
-        name: redispod
-        app: voting-app
-  spec:
-    containers:
-    - name: redis
-      image: yogeshraheja/thinknyxredis:v1
-    ports:
-      - containerPort: 6379
+  replicas: 1
   selector:
     matchLabels:
-      app: voting-app
-      name: redispod
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - image: yogeshraheja/thinknyxredis:v1
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: redis

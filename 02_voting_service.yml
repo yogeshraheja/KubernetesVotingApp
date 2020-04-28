@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: voting-service
-  namespace: devopsinaction
   labels:
-    name: voting-service
-    app: voting-app
+    app: vote
+  name: vote
+  namespace: devopsinaction
 spec:
+  type: NodePort
   ports:
-  - port: 80
+  - name: "vote-service"
+    port: 5000
     targetPort: 80
-  type: LoadBalancer
+    nodePort: 31000
   selector:
-     name: votingpod
-     app: voting-app
+    app: vote

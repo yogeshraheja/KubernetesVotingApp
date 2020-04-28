@@ -2,23 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: result
-  name: result
+    app: db
+  name: db
   namespace: devopsinaction
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: result
+      app: db
   template:
     metadata:
       labels:
-        app: result
+        app: db
     spec:
       containers:
-      - image: yogeshraheja/thinknyxresult:v1
-        name: result
+      - image: yogeshraheja/thinknyxdb:v1
+        name: postgres
         ports:
-        - containerPort: 80
-          name: result
-
+        - containerPort: 5432
+          name: postgres
