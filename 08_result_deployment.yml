@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resultdep
+  namespace: devopsinaction
+  labels:
+    name: resultdep
+    app: voting-app
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: resultpod
+      labels:
+        name: resultpod
+        app: voting-app
+    spec:
+      containers:
+      - name: result-app
+        image: yogeshraheja/thinknyxresult:v1
+        ports:
+        - containerPort: 80
+  selector:
+    matchLabels:
+      app: voting-app
+      name: resultpod
