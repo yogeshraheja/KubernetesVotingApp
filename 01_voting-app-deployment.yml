@@ -16,7 +16,7 @@ spec:
         app: vote
     spec:
       containers:
-      - image: yogeshraheja/thinknyxvote:v1
+      - image: yogeshraheja/thinknyxvote:v2
         name: vote
         ports:
         - containerPort: 80
