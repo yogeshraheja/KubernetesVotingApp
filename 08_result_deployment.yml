@@ -16,7 +16,7 @@ spec:
         app: result
     spec:
       containers:
-      - image: yogeshraheja/thinknyxresult:v1
+      - image: yogeshraheja/thinknyxresult:v2
         name: result
         ports:
         - containerPort: 80
